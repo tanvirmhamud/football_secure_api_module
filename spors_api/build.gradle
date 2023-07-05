@@ -55,14 +55,3 @@ dependencies {
 
 }
 
-
-
-afterEvaluate{
-    publishing{
-        publication{
-            release(MavenPublication){
-
-            }
-        }
-    }
-}
