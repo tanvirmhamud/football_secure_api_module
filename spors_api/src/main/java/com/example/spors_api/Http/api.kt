@@ -1,18 +1,20 @@
 package com.example.spors_api.Http
 
+import android.content.Context
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 
-class api {
+class api(contex: Context) {
 
     private var token : String? = null;
 
+
     init {
         System.loadLibrary("keys")
-        token = "live-soccer-tv-footballl-live-tv"
+        token = contex.packageName
     }
 
     private external fun getdomain(): String

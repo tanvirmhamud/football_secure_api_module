@@ -16,12 +16,11 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             liveshow()
         }
-
     }
 
 
     suspend fun liveshow() {
-        var livedata = api().livematch();
+        var livedata = api(this).livematch();
         Log.d("live data", "liveshow: ${livedata}")
     }
 }
