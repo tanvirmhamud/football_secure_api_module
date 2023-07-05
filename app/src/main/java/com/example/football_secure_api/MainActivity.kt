@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
 
     suspend fun liveshow() {
-        var livedata = api(this).livematch();
+        var livedata = api(this).getlivematch();
         Log.d("live data", "liveshow: ${livedata}")
     }
 }
