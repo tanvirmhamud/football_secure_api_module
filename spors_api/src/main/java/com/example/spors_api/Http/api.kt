@@ -1,20 +1,20 @@
 package com.example.spors_api.Http
 
 import android.content.Context
-import android.util.Log
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import okhttp3.OkHttpClient
 
 class api(contex: Context) {
 
     private var token : String? = null;
 
 
+
     init {
         System.loadLibrary("keys")
-        token = contex.packageName
+        token = "live-soccer-tv-footballl-live-tv"
     }
 
     private external fun getdomain(): String
@@ -52,7 +52,7 @@ class api(contex: Context) {
         return match.await();
     }
 
-    suspend fun getfixture_match_by_date(date: String = "2022-10-05"): String? {
+    suspend fun getfixturematchbydate(date: String = "2022-10-05"): String? {
         val fixture_match = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${getfixturebydaye()}$date",token!!)
             dara
@@ -60,7 +60,7 @@ class api(contex: Context) {
         return fixture_match.await();
     }
 
-    suspend fun getall_league(): String? {
+    suspend fun getallleague(): String? {
         val league = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${league()}",token!!)
             dara
@@ -84,7 +84,7 @@ class api(contex: Context) {
         return static.await();
     }
 
-    suspend fun getall_team_by_league_id(league: Int = 39, season: Int = 2019): String? {
+    suspend fun getallteambyleagueid(league: Int = 39, season: Int = 2019): String? {
         val allteam = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${teambyseasonleague()}${seasonid()}${season}/${leagueid()}${league}",token!!)
             dara
@@ -92,7 +92,7 @@ class api(contex: Context) {
         return allteam.await();
     }
 
-    suspend fun getteam_match(teamid: Int = 33, season: Int = 2019): String? {
+    suspend fun getteammatch(teamid: Int = 33, season: Int = 2019): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${fixturebyteam()}${teamid()}${teamid}/${seasonid()}${season}",token!!)
             dara
@@ -140,7 +140,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getfixture_statistic(fixtureid: Int = 36584): String? {
+    suspend fun getfixturestatistic(fixtureid: Int = 36584): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${fixturestatistic()}${fixtureid}",token!!)
             dara
@@ -148,7 +148,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getplayer_statistic(fixtureid: Int = 36584): String? {
+    suspend fun getplayerstatistic(fixtureid: Int = 36584): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${playerstatistic()}${fixtureid}",token!!)
             dara
@@ -156,7 +156,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getfixture_event(fixtureid: Int = 36584): String? {
+    suspend fun getfixtureevent(fixtureid: Int = 36584): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${fixtureevent()}${fixtureid}",token!!)
             dara
@@ -164,7 +164,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getfixture_league_date(date : String = "2022-10-05", league: Int= 807, season : Int = 2022): String? {
+    suspend fun getfixtureleaguedate(date : String = "2022-10-05", league: Int= 807, season : Int = 2022): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${fixtureleaguedate()}${date}/${leagueid()}${league}/${seasonid()}${season}",token!!)
             dara
@@ -172,7 +172,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getteam_playerlist( teamid: Int = 140, season : Int = 2022): String? {
+    suspend fun getteamplayerlist( teamid: Int = 140, season : Int = 2022): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${teamplayerlist()}${seasonid()}${season}/${teamid()}${teamid}",token!!)
             dara
@@ -180,7 +180,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getplayerlist_season_league_team( teamid: Int = 140, season : Int = 2022, leagueid : Int=61): String? {
+    suspend fun getplayerlistseasonleagueteam( teamid: Int = 140, season : Int = 2022, leagueid : Int=61): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${teamplayerlist()}${seasonid()}${season}/${teamid()}${teamid}/${leagueid()}${leagueid}",token!!)
             dara
@@ -188,7 +188,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getplayer_transfer( teamid: Int = 463,  playerid : Int=35845): String? {
+    suspend fun getplayertransfer(teamid: Int = 463, playerid : Int=35845): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${playertransfer()}${playerid()}${playerid}/${teamid()}${teamid}",token!!)
             dara
@@ -196,7 +196,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getsingle_player_info( season: Int = 2019,  playerid : Int=35845): String? {
+    suspend fun getsingleplayerinfo( season: Int = 2019,  playerid : Int=35845): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${singleplayerinfo()}${playerid()}${playerid}/${seasonid()}${season}",token!!)
             dara
@@ -204,7 +204,7 @@ class api(contex: Context) {
         return teammatch.await();
     }
 
-    suspend fun getplayer_squard( playerid : Int=35845): String? {
+    suspend fun getplayersquard( playerid : Int=35845): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${playersquard()}${playerid}",token!!)
             dara

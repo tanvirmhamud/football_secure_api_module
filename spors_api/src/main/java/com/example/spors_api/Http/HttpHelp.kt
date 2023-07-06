@@ -8,11 +8,9 @@ import java.net.URL
 
 
 class HttpHelp {
-
-
-
-    var client: OkHttpClient = OkHttpClient();
+    var client: OkHttpClient = OkHttpClient()
      fun getRequest(sUrl: String, token: String): String? {
+
         var result: String? = null
         try {
             // Create URL
