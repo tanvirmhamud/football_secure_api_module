@@ -1,6 +1,7 @@
 package com.example.spors_api.Http
 
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
@@ -54,7 +55,7 @@ class api(contex: Context) {
 
     suspend fun getfixturematchbydate(date: String = "2022-10-05"): String? {
         val fixture_match = CoroutineScope(Dispatchers.IO).async {
-            var dara =  HttpHelp().getRequest("${getdomain()}${getfixturebydaye()}$date",token!!)
+            val dara =  HttpHelp().getRequest("${getdomain()}${getfixturebydaye()}${date}",token!!)
             dara
         }
         return fixture_match.await();

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
 
     suspend fun liveshow() {
-        var livedata = api(this).getlivematch();
+        var livedata = api(this).getfixturematchbydate("2022-10-05");
         Log.d("live data", "liveshow: ${livedata}")
     }
 }
