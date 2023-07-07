@@ -7,7 +7,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import okhttp3.OkHttpClient
 
-class api(contex: Context) {
+class api(context: Context) {
 
     private var token : String? = null;
 
@@ -15,7 +15,7 @@ class api(contex: Context) {
 
     init {
         System.loadLibrary("keys")
-        token = "live-soccer-tv-footballl-live-tv"
+        token = context.packageName
     }
 
     private external fun getdomain(): String
