@@ -215,10 +215,9 @@ class api(context: Context) {
         return teammatch.await();
     }
 
-    suspend fun getleague_fixture(): String? {
-//        var $baseurl/searchmatchwithoutdate/league=$leagueid/season=$season'
+    suspend fun getleague_fixture(league: Int= 807, season : Int = 2022): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
-            var dara =  HttpHelp().getRequest("${getdomain()}${leagueid()}${seasonid()}",token!!)
+            var dara =  HttpHelp().getRequest("${getdomain()}${leagueid()}${league}/${seasonid()}$season",token!!)
             dara
         }
         return teammatch.await();
