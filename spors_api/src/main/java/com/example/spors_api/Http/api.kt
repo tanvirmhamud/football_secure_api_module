@@ -44,6 +44,8 @@ class api(context: Context) {
     private external fun singleplayerinfo() : String
     private external fun playersquard() : String
 
+    private external fun searchmatchwithoutdate(): String
+
 
     suspend fun getlivematch(): String? {
         val match = CoroutineScope(Dispatchers.IO).async {
@@ -208,6 +210,15 @@ class api(context: Context) {
     suspend fun getplayersquard( playerid : Int=35845): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${playersquard()}${playerid}",token!!)
+            dara
+        }
+        return teammatch.await();
+    }
+
+    suspend fun getleague_fixture(): String? {
+//        var $baseurl/searchmatchwithoutdate/league=$leagueid/season=$season'
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().getRequest("${getdomain()}${leagueid()}${seasonid()}",token!!)
             dara
         }
         return teammatch.await();

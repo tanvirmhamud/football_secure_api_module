@@ -133,3 +133,9 @@ JNIEXPORT jstring JNICALL
 Java_com_example_spors_1api_Http_api_playersquard(JNIEnv *env, jobject thiz) {
     return (*env)-> NewStringUTF(env, "players/squads/player=");
 }
+
+
+JNIEXPORT jstring JNICALL
+Java_com_example_spors_1api_Http_api_searchmatchwithoutdate(JNIEnv *env, jobject thiz) {
+    return (*env)-> NewStringUTF(env, "searchmatchwithoutdate/");
+}
