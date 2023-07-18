@@ -59,6 +59,11 @@ Java_com_example_spors_1api_Http_api_teamid(JNIEnv *env, jobject thiz) {
 }
 
 JNIEXPORT jstring JNICALL
+Java_com_example_spors_1api_Http_api_teamid2(JNIEnv *env, jobject thiz) {
+    return (*env)-> NewStringUTF(env, "teamid=");
+}
+
+JNIEXPORT jstring JNICALL
 Java_com_example_spors_1api_Http_api_playerid(JNIEnv *env, jobject thiz) {
     return (*env)-> NewStringUTF(env, "player=");
 }

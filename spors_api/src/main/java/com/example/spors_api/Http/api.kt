@@ -27,6 +27,7 @@ class api(context: Context) {
     private external fun leagueid() : String
     private external fun seasonid() : String
     private external fun teamid() : String
+    private external fun teamid2() : String
     private external fun playerid(): String
     private external fun teambyseasonleague() : String
     private external fun fixturebyteam() : String
