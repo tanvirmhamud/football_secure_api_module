@@ -178,7 +178,7 @@ class api(context: Context) {
 
     suspend fun getteamplayerlist( teamid: Int = 140, season : Int = 2022): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
-            var dara =  HttpHelp().getRequest("${getdomain()}${teamplayerlist()}${seasonid()}${season}/${teamid()}${teamid}",token!!)
+            var dara =  HttpHelp().getRequest("${getdomain()}${teamplayerlist()}${seasonid()}${season}/${teamid2()}${teamid}",token!!)
             dara
         }
         return teammatch.await();
