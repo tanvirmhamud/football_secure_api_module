@@ -150,3 +150,8 @@ JNIEXPORT jstring JNICALL
 Java_com_example_spors_1api_Http_api_top_1score(JNIEnv *env, jobject thiz) {
     return (*env)-> NewStringUTF(env, "topscore/league=");
 }
+
+JNIEXPORT jstring JNICALL
+Java_com_example_spors_1api_Http_api_leagueid2(JNIEnv *env, jobject thiz) {
+    return (*env)-> NewStringUTF(env, "leaguefixtures/leagusid=");
+}

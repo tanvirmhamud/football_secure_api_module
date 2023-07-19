@@ -25,6 +25,7 @@ class api(context: Context) {
     private external fun statisticbyfixtureid() : String
     private external fun standingbyleagueseason() : String
     private external fun leagueid() : String
+    private external fun leagueid2() : String
     private external fun seasonid() : String
     private external fun teamid() : String
     private external fun teamid2() : String
@@ -217,7 +218,7 @@ class api(context: Context) {
 
     suspend fun getleague_fixture(league: Int= 807, season : Int = 2022): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
-            var dara =  HttpHelp().getRequest("${getdomain()}${leagueid()}${league}/${seasonid()}$season",token!!)
+            var dara =  HttpHelp().getRequest("${getdomain()}${leagueid2()}${league}/${seasonid()}$season",token!!)
             dara
         }
         return teammatch.await();
