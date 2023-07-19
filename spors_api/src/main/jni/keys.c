@@ -144,3 +144,9 @@ JNIEXPORT jstring JNICALL
 Java_com_example_spors_1api_Http_api_searchmatchwithoutdate(JNIEnv *env, jobject thiz) {
     return (*env)-> NewStringUTF(env, "searchmatchwithoutdate/");
 }
+
+
+JNIEXPORT jstring JNICALL
+Java_com_example_spors_1api_Http_api_top_1score(JNIEnv *env, jobject thiz) {
+    return (*env)-> NewStringUTF(env, "topscore/league=");
+}
