@@ -48,6 +48,9 @@ class api(context: Context) {
     private external fun searchmatchwithoutdate(): String
     private external fun top_score(): String
 
+    private  external fun trophies() : String
+    private  external fun transfer() : String
+
     suspend fun getlivematch(): String? {
         val match = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${getlive()}", token!!)
@@ -227,6 +230,22 @@ class api(context: Context) {
     suspend fun gettop_score(league: Int= 807, season : Int = 2022): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${top_score()}$league/${seasonid()}$season",token!!)
+            dara
+        }
+        return teammatch.await();
+    }
+
+    suspend fun gettrophy( playerid : Int=35845): String? {
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().getRequest("${getdomain()}${trophies()}$playerid",token!!)
+            dara
+        }
+        return teammatch.await();
+    }
+
+    suspend fun gettransfer( playerid : Int=35845): String? {
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().getRequest("${getdomain()}${transfer()}$playerid",token!!)
             dara
         }
         return teammatch.await();
