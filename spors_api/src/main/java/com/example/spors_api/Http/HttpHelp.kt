@@ -1,8 +1,10 @@
 package com.example.spors_api.Http
 
 import android.util.Log
+import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okio.IOException
 import java.lang.annotation.Native
 import java.net.URL
 
@@ -25,6 +27,36 @@ class HttpHelp {
             print("Error when executing get request: "+err.localizedMessage)
         }
         return result
+    }
+
+    fun postRequest(sUrl: String, token: String, matchid : Int, home : Int, away : Int, homename : String, awayname : String, draw : Int): String? {
+        var result: String? = null
+        try {
+            val requestBody = MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("matchid", "${matchid}")
+                .addFormDataPart("home", "${home}")
+                .addFormDataPart("away", "${away}")
+                .addFormDataPart("draw", "${draw}")
+                .addFormDataPart("homename", "${homename}")
+                .addFormDataPart("awayname", "${awayname}")
+                .build()
+
+            val request = Request.Builder()
+                .header("ab", token)
+                .url(sUrl)
+                .post(requestBody)
+                .build()
+
+            client.newCall(request).execute().use { response ->
+                if (!response.isSuccessful) throw IOException("Unexpected code $response")
+
+                result = response.body!!.string();
+            }
+        } catch(err:Error) {
+            print("Error when executing get request: "+err.localizedMessage)
+        }
+        return result;
     }
 
 

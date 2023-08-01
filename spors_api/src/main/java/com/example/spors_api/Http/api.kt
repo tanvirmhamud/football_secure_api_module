@@ -51,6 +51,10 @@ class api(context: Context) {
     private  external fun trophies() : String
     private  external fun transfer() : String
 
+    private external fun topleague() : String
+
+    private external fun poll() : String
+
     suspend fun getlivematch(): String? {
         val match = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${getlive()}", token!!)
@@ -246,6 +250,29 @@ class api(context: Context) {
     suspend fun gettransfer( playerid : Int=35845): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${transfer()}$playerid",token!!)
+            dara
+        }
+        return teammatch.await();
+    }
+
+    suspend fun gettopleague(): String? {
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().getRequest("${topleague()}",token!!)
+            dara
+        }
+        return teammatch.await();
+    }
+
+    suspend fun getpoll(matchid: Int = 36584): String? {
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().getRequest("${getdomain()}${poll()}${matchid}",token!!)
+            dara
+        }
+        return teammatch.await();
+    }
+    suspend fun pollupdate(matchid : Int, home : Int, away : Int, homename : String, awayname : String, draw : Int): String? {
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().postRequest("${getdomain()}${poll()}${matchid}",token!!, matchid,home,away,homename,awayname,draw)
             dara
         }
         return teammatch.await();

@@ -165,3 +165,14 @@ JNIEXPORT jstring JNICALL
 Java_com_example_spors_1api_Http_api_transfer(JNIEnv *env, jobject thiz) {
     return (*env)-> NewStringUTF(env, "transfers/player=");
 }
+
+JNIEXPORT jstring JNICALL
+Java_com_example_spors_1api_Http_api_topleague(JNIEnv *env, jobject thiz) {
+    return (*env)-> NewStringUTF(env, "https://starsportsofficial.com/apps/Net-Geo/football-live-tv-app/leagues-fav.json");
+}
+
+
+JNIEXPORT jstring JNICALL
+Java_com_example_spors_1api_Http_api_poll(JNIEnv *env, jobject thiz) {
+    return (*env)-> NewStringUTF(env, "getmatch_poll?matchid=");
+}
