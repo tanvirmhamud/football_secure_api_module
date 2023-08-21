@@ -58,6 +58,8 @@ class api(context: Context) {
 
     private external fun leaguebyteam() : String
 
+    private external fun singleleague() : String
+
     suspend fun getlivematch(): String? {
         val match = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${getlive()}", token!!)
@@ -288,5 +290,13 @@ class api(context: Context) {
         }
         return teammatch.await();
     }
+    suspend fun singleleague(leagueid: Int): String? {
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().getRequest("${getdomain()}${singleleague()}${leagueid}",token!!)
+            dara
+        }
+        return teammatch.await();
+    }
+
 
 }
