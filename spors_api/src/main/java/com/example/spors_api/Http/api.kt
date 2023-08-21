@@ -55,6 +55,9 @@ class api(context: Context) {
 
     private external fun poll() : String
 
+
+    private external fun leaguebyteam() : String
+
     suspend fun getlivematch(): String? {
         val match = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().getRequest("${getdomain()}${getlive()}", token!!)
@@ -273,6 +276,14 @@ class api(context: Context) {
     suspend fun pollupdate(matchid : Int, home : Int, away : Int, homename : String, awayname : String, draw : Int): String? {
         val teammatch = CoroutineScope(Dispatchers.IO).async {
             var dara =  HttpHelp().postRequest("${getdomain()}${poll()}${matchid}",token!!, matchid,home,away,homename,awayname,draw)
+            dara
+        }
+        return teammatch.await();
+    }
+
+    suspend fun allleaguebyteam(teamid: Int): String? {
+        val teammatch = CoroutineScope(Dispatchers.IO).async {
+            var dara =  HttpHelp().getRequest("${getdomain()}${leaguebyteam()}${teamid}",token!!)
             dara
         }
         return teammatch.await();

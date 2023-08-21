@@ -25,7 +25,7 @@ Java_com_example_spors_1api_Http_api_getfixturebydaye(JNIEnv *env, jobject thiz)
 JNIEXPORT jstring JNICALL
 Java_com_example_spors_1api_Http_api_league(JNIEnv *env, jobject thiz) {
 
-    return (*env)-> NewStringUTF(env, "leagues/current=true");
+    return (*env)-> NewStringUTF(env, "leagues");
 }
 
 JNIEXPORT jstring JNICALL
@@ -175,4 +175,9 @@ Java_com_example_spors_1api_Http_api_topleague(JNIEnv *env, jobject thiz) {
 JNIEXPORT jstring JNICALL
 Java_com_example_spors_1api_Http_api_poll(JNIEnv *env, jobject thiz) {
     return (*env)-> NewStringUTF(env, "getmatch_poll?matchid=");
+}
+
+JNIEXPORT jstring JNICALL
+Java_com_example_spors_1api_Http_api_leaguebyteam(JNIEnv *env, jobject thiz) {
+    return (*env)-> NewStringUTF(env, "leagues/team=");
 }
